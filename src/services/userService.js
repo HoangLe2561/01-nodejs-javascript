@@ -74,7 +74,7 @@ const loginService = async (email, password) => {
 const getUserService = async () => {
   try {
     //save user to database
-    let result = await User.find({});
+    let result = await User.find({}).select("-password");
     return result;
   } catch (error) {
     console.log(error);
