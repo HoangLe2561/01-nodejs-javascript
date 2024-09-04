@@ -13,6 +13,11 @@ const auth = (req, res, next) => {
         // verify
         try {
           const decoded = jwt.verify(token, process.env.JWT_SECRET);
+          req.user = {
+            email: decoded.email,
+            name: decoded.name,
+            createdBy: "Hoang",
+          };
           next();
         } catch (error) {
           return res.status(401).json({
